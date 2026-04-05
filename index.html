@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -309,10 +308,11 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
             display: flex;
             align-items: center;
+            justify-content: space-between; /* Menjaga jarak antar elemen */
             gap: 15px;
             transition: all 0.3s ease;
             z-index: 2000; /* Di atas Navbar */
-            width: auto;
+            width: 320px; /* Lebar dasar */
             max-width: 90%;
         }
 
@@ -338,13 +338,12 @@
         /* Info Lagu - FIX RESPONSIVE */
         .track-info {
             display: flex; flex-direction: column; justify-content: center;
-            min-width: 100px; max-width: 160px; /* Batas lebar judul */
-            width: 0; /* Trik Flexbox untuk ellipsis */
+            flex: 1; /* Teks mengambil sisa ruang kosong */
+            overflow: hidden; /* Wajib ada agar titik tiga (ellipsis) berfungsi */
         }
 
         .track-name {
             font-weight: 600; font-size: 0.9rem; color: white;
-            /* FIX: Agar judul panjang terpotong rapi dengan titik tiga */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -400,12 +399,7 @@
                 bottom: 15px;
                 padding: 8px 15px;
                 gap: 10px;
-                width: 95%; /* Mengambil hampir seluruh lebar layar */
-                max-width: 95%;
-            }
-
-            .track-info {
-                max-width: 110px; /* Lebar judul lebih kecil di HP */
+                width: 90%; /* Agar sedikit lebih memanjang di layar HP */
             }
 
             .track-name {
@@ -419,7 +413,6 @@
 </head>
 <body>
 
-    <!-- Navigasi -->
     <nav>
         <div class="container nav-content">
             <a href="#" class="logo">Dashboard<span>Admin</span></a>
@@ -437,7 +430,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -461,7 +453,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <div class="container">
             <h2 class="section-title"><span>Tentang Saya</span></h2>
@@ -480,12 +471,10 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section id="portfolio">
         <div class="container">
             <h2 class="section-title"><span>Portfolio Saya</span></h2>
             <div class="projects-grid">
-                <!-- Project 1 -->
                 <article class="project-card reveal">
                     <div class="project-img">
                         <img src="./pro.png" alt="Project 1" onerror="this.src='https://via.placeholder.com/300x200'">
@@ -498,7 +487,6 @@
                     </div>
                 </article>
 
-                <!-- Project 2 -->
                 <article class="project-card reveal">
                     <div class="project-img">
                         <img src="./flow.png" alt="Project 2" onerror="this.src='https://via.placeholder.com/300x200'">
@@ -511,7 +499,6 @@
                     </div>
                 </article>
 
-                <!-- Project 3 -->
                 <article class="project-card reveal">
                     <div class="project-img">
                         <img src="./meee.png" alt="Project 3" onerror="this.src='https://via.placeholder.com/300x200'">
@@ -527,7 +514,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title"><span>Hubungi Saya</span></h2>
@@ -551,7 +537,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social-links">
@@ -563,15 +548,8 @@
         </div>
     </footer>
 
-    <!-- =======================
-         FITUR MUSIK (HTML)
-         ======================= -->
-    
-    <!-- Audio Element (Sumber Musik) -->
-    <!-- Anda bisa mengganti src dengan link mp3 pilihan Anda -->
     <audio id="audioSource" src="./blue.mp3" preload="auto"></audio>
 
-    <!-- Komponen Player -->
     <div class="music-player-container" id="playerContainer">
         <div class="visualizer" id="visualizer">
             <div class="bar"></div>
@@ -592,10 +570,8 @@
         </button>
     </div>
 
-    <!-- Toast Notification -->
     <div id="toast" class="toast">Notifikasi</div>
 
-    <!-- JavaScript -->
     <script>
         // 1. Efek Mengetik (Typewriter)
         const textElement = document.querySelector('.typewriter');
